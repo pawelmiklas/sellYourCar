@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sellYourCar"
         mc:Ignorable="d"
-        Title="car_table" Height="600" Width="900">
+        Title="car_table" Height="600" Width="1000">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="Dodaj" Content="Dodaj" Click="insertClick" HorizontalAlignment="Left" Margin="613,10,10,0" VerticalAlignment="Top" Width="70"/>
@@ -19,10 +19,10 @@
                 <DataGridTextColumn Header="Kraj pochodzenia" Binding="{Binding country}" />
                 <DataGridTextColumn Header="Moc" Binding="{Binding horsePower}" />
                 <DataGridTextColumn Header="Liczba drzwi" Binding="{Binding numberOfDoors}" />
-                <DataGridTextColumn Header="Przebieg" Binding="{Binding mileage}" />
+                <DataGridTextColumn Header="Przebieg (km)" Binding="{Binding mileage}" />
                 <DataGridTextColumn Header="Pojemność skokowa" Binding="{Binding capacity}" />
-                <DataGridTextColumn Header="Rok Produkcji" Binding="{Binding yearOfProduction}" />
-                <DataGridTextColumn Header="Kwota" Binding="{Binding price}" />
+                <DataGridTextColumn Header="Data produkcji" Binding="{Binding yearOfProduction, StringFormat={}{0:yy.MM.dd}}" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding price, StringFormat='c'}" />
                 <DataGridTextColumn Header="Kolor" Binding="{Binding color}" />
                 <DataGridTextColumn Header="Liczba miejsc" Binding="{Binding numberOfSeats}" />
                 <DataGridTemplateColumn>
