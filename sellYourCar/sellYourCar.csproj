@@ -82,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="car_table.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,6 +117,9 @@
     </Compile>
     <Compile Include="CarType.cs">
       <DependentUpon>CarsList.tt</DependentUpon>
+    </Compile>
+    <Compile Include="car_table.xaml.cs">
+      <DependentUpon>car_table.xaml</DependentUpon>
     </Compile>
     <Compile Include="Color.cs">
       <DependentUpon>CarsList.tt</DependentUpon>
