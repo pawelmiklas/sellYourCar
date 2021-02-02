@@ -82,6 +82,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CarAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="car_table.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -99,6 +103,9 @@
     </Compile>
     <Compile Include="Car.cs">
       <DependentUpon>CarsList.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarAdd.xaml.cs">
+      <DependentUpon>CarAdd.xaml</DependentUpon>
     </Compile>
     <Compile Include="CarsList.Context.cs">
       <AutoGen>True</AutoGen>

@@ -28,21 +28,28 @@ namespace sellYourCar
             var result = from item in db.Cars
                     select new 
                     {
-                        Marka = item.Brand.name,
-                        Typ = item.CarType.name,
-                        RodzajPaliwa = item.Fuel.type,
-                        RokProdukcji = item.yearOfProduction,
-                        Przebieg = item.mileage,
-                        PojemnoscSkokowa = item.capacity,
-                        Moc = item.horsePower,
-                        LiczbaDrzwi = item.numberOfDoors,
-                        LiczbaMiejsc = item.numberOfSeats,
-                        Kolor = item.Color.name,
-                        KrajPochodzenia = item.Country.name
+                        brand = item.Brand.name,
+                        type = item.CarType.name,
+                        fuelType = item.Fuel.type,
+                        yearOfProduction = item.yearOfProduction,
+                        mileage = item.mileage,
+                        capacity = item.capacity,
+                        horsePower = item.horsePower,
+                        numberOfDoors = item.numberOfDoors,
+                        numberOfSeats = item.numberOfSeats,
+                        color = item.Color.name,
+                        country = item.Country.name,
+                        price = item.price,
                     };
 
             // insert data to table
-            this.carsList.ItemsSource = result.ToList();
+            this.myDataGrid.ItemsSource = result.ToList();
+        }
+
+        private void insertClick(object sender, RoutedEventArgs e)
+        {
+            CarAdd insertPage = new CarAdd();
+            insertPage.ShowDialog();
         }
     }
 }

@@ -5,9 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:sellYourCar"
         mc:Ignorable="d"
-        Title="car_table" Height="450" Width="800">
+        Title="car_table" Height="600" Width="900">
     <Grid>
-        <DataGrid x:Name="carsList" HorizontalAlignment="Left" Height="337" Margin="10,72,0,0" VerticalAlignment="Top" Width="772"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="Dodaj" Content="Dodaj" Click="insertClick" HorizontalAlignment="Left" Margin="613,10,10,0" VerticalAlignment="Top" Width="70"/>
+        </StackPanel>
 
+        <DataGrid x:Name="myDataGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Margin="0,38,0,0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Marka" Binding="{Binding brand}" />
+                <DataGridTextColumn Header="Typ" Binding="{Binding type}" />
+                <DataGridTextColumn Header="Typ paliwa" Binding="{Binding fuelType}" />
+                <DataGridTextColumn Header="Kraj pochodzenia" Binding="{Binding country}" />
+                <DataGridTextColumn Header="Moc" Binding="{Binding horsePower}" />
+                <DataGridTextColumn Header="Liczba drzwi" Binding="{Binding numberOfDoors}" />
+                <DataGridTextColumn Header="Przebieg" Binding="{Binding mileage}" />
+                <DataGridTextColumn Header="Pojemność skokowa" Binding="{Binding capacity}" />
+                <DataGridTextColumn Header="Rok Produkcji" Binding="{Binding yearOfProduction}" />
+                <DataGridTextColumn Header="Kwota" Binding="{Binding price}" />
+                <DataGridTextColumn Header="Kolor" Binding="{Binding color}" />
+                <DataGridTextColumn Header="Liczba miejsc" Binding="{Binding numberOfSeats}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="Action" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.HeaderTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="updateBtn" Content="Zmien" />
+                                <Button x:Name="deleteBtn" Content="Usun" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
