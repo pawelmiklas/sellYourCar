@@ -62,6 +62,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -88,6 +90,39 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Brand.cs">
+      <DependentUpon>CarsList.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Car.cs">
+      <DependentUpon>CarsList.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarsList.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarsList.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarsList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarsList.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CarsList.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CarsList.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="CarType.cs">
+      <DependentUpon>CarsList.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Color.cs">
+      <DependentUpon>CarsList.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>CarsList.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fuel.cs">
+      <DependentUpon>CarsList.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -111,6 +146,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="CarsList.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CarsList.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CarsList.edmx.diagram">
+      <DependentUpon>CarsList.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -128,6 +170,16 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>carsDB.mdf</DependentUpon>
     </Content>
+    <Content Include="CarsList.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CarsList.edmx</DependentUpon>
+      <LastGenOutput>CarsList.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CarsList.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CarsList.edmx</DependentUpon>
+      <LastGenOutput>CarsList.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -140,6 +192,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
