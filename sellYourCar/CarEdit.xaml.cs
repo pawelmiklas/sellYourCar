@@ -39,10 +39,10 @@ namespace sellYourCar
             var updateCar = (from car in db.Cars where car.Id == _carId select car).Single();
 
             comboBoxBrand.SelectedItem = new KeyValuePair<int, string>(updateCar.brandID, updateCar.Brand.name);
-            comboBoxColor.SelectedItem= new KeyValuePair<int, string>(updateCar.colorID, updateCar.Color.name);
-            comboBoxCountry.SelectedItem=new KeyValuePair<int, string>(updateCar.countryID, updateCar.Country.name);
-            comboBoxFuelType.SelectedItem=new KeyValuePair<int, string>(updateCar.fuelTypeID, updateCar.Fuel.type);
-            comboBoxType.SelectedItem=new KeyValuePair<int, string>(updateCar.typeID, updateCar.CarType.name);
+            comboBoxColor.SelectedItem = new KeyValuePair<int, string>(updateCar.colorID, updateCar.Color.name);
+            comboBoxCountry.SelectedItem = new KeyValuePair<int, string>(updateCar.countryID, updateCar.Country.name);
+            comboBoxFuelType.SelectedItem = new KeyValuePair<int, string>(updateCar.fuelTypeID, updateCar.Fuel.type);
+            comboBoxType.SelectedItem = new KeyValuePair<int, string>(updateCar.typeID, updateCar.CarType.name);
             textCapacity.Text = Convert.ToString(updateCar.capacity);
             textHorsePower.Text = Convert.ToString(updateCar.horsePower);
             textNumberOfSeats.Text = Convert.ToString(updateCar.numberOfSeats);
