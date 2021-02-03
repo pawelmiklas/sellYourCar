@@ -20,6 +20,7 @@ namespace sellYourCar
     public partial class CarEdit : Window
     {
         static carsDBEntities db = new carsDBEntities();
+        // get table values
         IQueryable<Brand> brands = from brand in db.Brands select brand;
         IQueryable<CarType> carTypes = from carType in db.CarTypes select carType;
         IQueryable<Country> countries = from country in db.Countries select country;
@@ -30,6 +31,7 @@ namespace sellYourCar
         {
             _carId = carId;
             InitializeComponent();
+            // insert values to combobox
             foreach (var item in brands) comboBoxBrand.Items.Add(new KeyValuePair<int, string>(item.Id, item.name));
             foreach (var item in carTypes) comboBoxType.Items.Add(new KeyValuePair<int, string>(item.Id, item.name));
             foreach (var item in countries) comboBoxCountry.Items.Add(new KeyValuePair<int, string>(item.Id, item.name));
@@ -37,7 +39,7 @@ namespace sellYourCar
             foreach (var item in fuels) comboBoxFuelType.Items.Add(new KeyValuePair<int, string>(item.Id, item.type));
 
             var updateCar = (from car in db.Cars where car.Id == _carId select car).Single();
-
+            // setting initial values
             comboBoxBrand.SelectedItem = new KeyValuePair<int, string>(updateCar.brandID, updateCar.Brand.name);
             comboBoxColor.SelectedItem = new KeyValuePair<int, string>(updateCar.colorID, updateCar.Color.name);
             comboBoxCountry.SelectedItem = new KeyValuePair<int, string>(updateCar.countryID, updateCar.Country.name);
@@ -54,12 +56,13 @@ namespace sellYourCar
 
         private void onEditApply(object sender, RoutedEventArgs e)
         {
+            // get car from db and change values
             var updateCar = (from car in db.Cars where car.Id == _carId select car).Single();
-            updateCar.brandID = GetIdValue(comboBoxBrand.SelectedItem.ToString());
-            updateCar.colorID = GetIdValue(comboBoxColor.SelectedItem.ToString());
-            updateCar.countryID = GetIdValue(comboBoxCountry.SelectedItem.ToString());
-            updateCar.fuelTypeID = GetIdValue(comboBoxFuelType.SelectedItem.ToString());
-            updateCar.typeID = GetIdValue(comboBoxType.SelectedItem.ToString());
+            updateCar.brandID = GetIdValueUtil.GetIdValue(comboBoxBrand.SelectedItem.ToString());
+            updateCar.colorID = GetIdValueUtil.GetIdValue(comboBoxColor.SelectedItem.ToString());
+            updateCar.countryID = GetIdValueUtil.GetIdValue(comboBoxCountry.SelectedItem.ToString());
+            updateCar.fuelTypeID = GetIdValueUtil.GetIdValue(comboBoxFuelType.SelectedItem.ToString());
+            updateCar.typeID = GetIdValueUtil.GetIdValue(comboBoxType.SelectedItem.ToString());
             updateCar.capacity = short.Parse(textCapacity.Text);
             updateCar.horsePower = short.Parse(textHorsePower.Text);
             updateCar.numberOfSeats = byte.Parse(textNumberOfSeats.Text);
@@ -70,6 +73,7 @@ namespace sellYourCar
 
             db.SaveChanges();
 
+            // get latest cars
             var result = from item in db.Cars
                          select new CarShape
                          {
@@ -88,14 +92,9 @@ namespace sellYourCar
                              price = item.price,
                          };
 
+            // insert cars to table
             car_table.datagrid.ItemsSource = result.ToList();
             this.Hide();
-        }
-
-        public static int GetIdValue(string value)
-        {
-            var clearValue = value.Replace(@"[", "").Replace(@"]", "");
-            return Convert.ToInt32(clearValue.Split(',')[0]);
         }
     }
 }

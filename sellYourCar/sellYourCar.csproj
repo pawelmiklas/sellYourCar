@@ -145,6 +145,7 @@
     <Compile Include="Fuel.cs">
       <DependentUpon>CarsList.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetIdValueUtil.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

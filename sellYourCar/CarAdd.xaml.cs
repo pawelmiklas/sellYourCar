@@ -20,6 +20,7 @@ namespace sellYourCar
     public partial class CarAdd : Window
     {
         static carsDBEntities db = new carsDBEntities();
+        // get table values
         IQueryable<Brand> brands = from brand in db.Brands select brand;
         IQueryable<CarType> carTypes = from carType in db.CarTypes select carType;
         IQueryable<Country> countries = from country in db.Countries select country;
@@ -28,6 +29,7 @@ namespace sellYourCar
         public CarAdd()
         {
             InitializeComponent();
+            // insert values to combobox
             foreach (var item in brands) comboBoxBrand.Items.Add(new KeyValuePair<int, string>(item.Id, item.name));
             foreach (var item in carTypes) comboBoxType.Items.Add(new KeyValuePair<int, string>(item.Id, item.name));
             foreach (var item in countries) comboBoxCountry.Items.Add(new KeyValuePair<int, string>(item.Id, item.name));
@@ -61,19 +63,19 @@ namespace sellYourCar
                 comboBoxType,
             };
 
-            Console.WriteLine(textProductionDate.Text);
-
+            // validate fields
             var isValid = fieldValues.All(item => item != "" && item != null) && comboBoxValues.All(item => item.SelectedItem != null);
-            
+
             if (isValid)
             {
+                // create car with values
                 Car newCar = new Car()
                 {
-                    brandID = GetIdValue(comboBoxBrand.SelectedItem.ToString()),
-                    colorID = GetIdValue(comboBoxColor.SelectedItem.ToString()),
-                    countryID = GetIdValue(comboBoxCountry.SelectedItem.ToString()),
-                    fuelTypeID = GetIdValue(comboBoxFuelType.SelectedItem.ToString()),
-                    typeID = GetIdValue(comboBoxType.SelectedItem.ToString()),
+                    brandID = GetIdValueUtil.GetIdValue(comboBoxBrand.SelectedItem.ToString()),
+                    colorID = GetIdValueUtil.GetIdValue(comboBoxColor.SelectedItem.ToString()),
+                    countryID = GetIdValueUtil.GetIdValue(comboBoxCountry.SelectedItem.ToString()),
+                    fuelTypeID = GetIdValueUtil.GetIdValue(comboBoxFuelType.SelectedItem.ToString()),
+                    typeID = GetIdValueUtil.GetIdValue(comboBoxType.SelectedItem.ToString()),
                     capacity = short.Parse(textCapacity.Text),
                     horsePower = short.Parse(textHorsePower.Text),
                     numberOfSeats = byte.Parse(textNumberOfSeats.Text),
@@ -83,6 +85,7 @@ namespace sellYourCar
                     yearOfProduction = DateTime.Parse(textProductionDate.Text),
                 };
 
+                // add car to database and save changes
                 db.Cars.Add(newCar);
                 db.SaveChanges();
 
@@ -104,18 +107,14 @@ namespace sellYourCar
                                  price = item.price,
                              };
 
+                // show latest car table data
                 car_table.datagrid.ItemsSource = result.ToList();
                 this.Hide();
-            } else
+            }
+            else
             {
                 MessageBox.Show("Uzupełnij wszystkie pola", "Błąd walidacji", MessageBoxButton.OKCancel, MessageBoxImage.Error);
             }
-        }
-
-        public static int GetIdValue(string value)
-        {
-            var clearValue = value.Replace(@"[", "").Replace(@"]", "");
-            return Convert.ToInt32(clearValue.Split(',')[0]);
         }
     }
 }
