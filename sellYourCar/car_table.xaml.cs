@@ -86,5 +86,18 @@ namespace sellYourCar
                     myDataGrid.ItemsSource = result.ToList();
                 }
         }
+
+        private void onEdit(object sender, RoutedEventArgs e)
+        {
+            var sItem = myDataGrid.SelectedItem as CarShape;
+
+            if (sItem != null)
+            {
+                var selectedCar = db.Cars.Where(item => item.Id == sItem.Id).Single();
+
+                CarEdit editPage = new CarEdit(selectedCar.Id);
+                editPage.ShowDialog();
+            }
+        }
     }
 }

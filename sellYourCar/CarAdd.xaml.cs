@@ -52,13 +52,20 @@ namespace sellYourCar
                 textProductionDate.Text
             };
 
-            var isValid = fieldValues.Any(item => item != "" && item != null);
+            var comboBoxValues = new List<ComboBox>()
+            {
+                comboBoxBrand,
+                comboBoxColor,
+                comboBoxCountry,
+                comboBoxFuelType,
+                comboBoxType,
+            };
 
-            if (isValid && comboBoxBrand.SelectedItem != null &&
-                comboBoxColor.SelectedItem != null &&
-                comboBoxCountry.SelectedItem != null &&
-                comboBoxFuelType.SelectedItem != null &&
-                comboBoxType.SelectedItem != null)
+            Console.WriteLine(textProductionDate.Text);
+
+            var isValid = fieldValues.All(item => item != "" && item != null) && comboBoxValues.All(item => item.SelectedItem != null);
+            
+            if (isValid)
             {
                 Car newCar = new Car()
                 {

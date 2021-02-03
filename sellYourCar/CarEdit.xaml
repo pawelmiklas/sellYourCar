@@ -1,0 +1,56 @@
+﻿<Window x:Class="sellYourCar.CarEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:sellYourCar"
+        mc:Ignorable="d"
+        Title="CarEdit" Height="470" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="253*"/>
+            <ColumnDefinition Width="339*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock HorizontalAlignment="Left" Margin="144,10,0,0" TextWrapping="Wrap" Text="Edytuj ofertę samochodu" VerticalAlignment="Top" FontSize="20" Grid.ColumnSpan="2"/>
+
+
+        <TextBlock HorizontalAlignment="Left" Margin="9,52,0,0" TextWrapping="Wrap" Text="Marka" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <ComboBox x:Name="comboBoxBrand" SelectedValuePath="Key" DisplayMemberPath="Value"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="122,49,0,0" VerticalAlignment="Top" Width="340"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" Text="Typ" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <ComboBox x:Name="comboBoxType" SelectedValuePath="Key" DisplayMemberPath="Value" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="122,76,0,0" VerticalAlignment="Top" Width="340"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="9,106,0,0" TextWrapping="Wrap" Text="Typ paliwa" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <ComboBox x:Name="comboBoxFuelType" SelectedValuePath="Key" DisplayMemberPath="Value" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="122,103,0,0" VerticalAlignment="Top" Width="340"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,133,0,0" TextWrapping="Wrap" Text="Kraj pochodzenia" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <ComboBox x:Name="comboBoxCountry" SelectedValuePath="Key" DisplayMemberPath="Value" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="122,130,0,0" VerticalAlignment="Top" Width="340"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,159,0,0" TextWrapping="Wrap" Text="Kolor" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <ComboBox x:Name="comboBoxColor" SelectedValuePath="Key" DisplayMemberPath="Value" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="122,157,0,0" VerticalAlignment="Top" Width="340"/>
+
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,187,0,0" TextWrapping="Wrap" Text="Moc" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <TextBox x:Name="textHorsePower" HorizontalAlignment="Left" Height="23" Margin="122,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" RenderTransformOrigin="-0.369,-0.459" Grid.ColumnSpan="2"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,215,0,0" TextWrapping="Wrap" Text="Liczba drzwi" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <TextBox x:Name="textNumberOfDoors" HorizontalAlignment="Left" Height="23" Margin="122,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" RenderTransformOrigin="-0.369,-0.459" Grid.ColumnSpan="2"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,243,0,0" TextWrapping="Wrap" Text="Przebieg" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <TextBox x:Name="textMileage" HorizontalAlignment="Left" Height="23" Margin="122,242,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" RenderTransformOrigin="-0.369,-0.459" Grid.ColumnSpan="2"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,271,0,0" TextWrapping="Wrap" Text="Pojemnosc skokowa" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <TextBox x:Name="textCapacity" HorizontalAlignment="Left" Height="23" Margin="122,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" RenderTransformOrigin="-0.369,-0.459" Grid.ColumnSpan="2"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,303,0,0" TextWrapping="Wrap" Text="Rok produkcji" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <DatePicker x:Name="textProductionDate" HorizontalAlignment="Left" Margin="122,302,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="340"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,332,0,0" TextWrapping="Wrap" Text="Kwota" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <TextBox x:Name="textPrice" Text="{Binding Path=Txt, StringFormat=C}" HorizontalAlignment="Left" Height="23" Margin="122,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="340" RenderTransformOrigin="-0.369,-0.459" Grid.ColumnSpan="2"/>
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,360,0,0" TextWrapping="Wrap" Text="Liczba miejsc" VerticalAlignment="Top" RenderTransformOrigin="0.643,-0.604"/>
+        <TextBox x:Name="textNumberOfSeats" HorizontalAlignment="Left" Height="23" Margin="122,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" RenderTransformOrigin="-0.369,-0.459" Grid.ColumnSpan="2"/>
+
+        <Button Content="Dodaj" Grid.Column="1" HorizontalAlignment="Left" Margin="177,400,0,0" VerticalAlignment="Top" Width="75" Click="onEditApply"/>
+    </Grid>
+</Window>

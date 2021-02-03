@@ -86,6 +86,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CarEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="car_table.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +110,9 @@
     </Compile>
     <Compile Include="CarAdd.xaml.cs">
       <DependentUpon>CarAdd.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CarEdit.xaml.cs">
+      <DependentUpon>CarEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="CarsList.Context.cs">
       <AutoGen>True</AutoGen>

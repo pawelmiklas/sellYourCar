@@ -28,13 +28,13 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.HeaderTemplate>
                         <DataTemplate>
-                            <TextBlock Text="Action" />
+                            <TextBlock Text="Akcje" />
                         </DataTemplate>
                     </DataGridTemplateColumn.HeaderTemplate>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button x:Name="updateBtn" Content="Zmien" />
+                                <Button x:Name="updateBtn" Content="Zmien" Click="onEdit"/>
                                 <Button x:Name="deleteBtn" Content="Usun" Click="onDelete" />
                             </StackPanel>
                         </DataTemplate>
