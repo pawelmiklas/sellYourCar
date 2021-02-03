@@ -19,37 +19,72 @@ namespace sellYourCar
     /// </summary>
     public partial class car_table : Window
     {
+        // connection with database
+        carsDBEntities db = new carsDBEntities();
+        public static DataGrid datagrid;
         public car_table()
         {
             InitializeComponent();
-            // connection with database
-            carsDBEntities db = new carsDBEntities();
             // map data to shape
             var result = from item in db.Cars
-                    select new 
-                    {
-                        brand = item.Brand.name,
-                        type = item.CarType.name,
-                        fuelType = item.Fuel.type,
-                        yearOfProduction = item.yearOfProduction,
-                        mileage = item.mileage,
-                        capacity = item.capacity,
-                        horsePower = item.horsePower,
-                        numberOfDoors = item.numberOfDoors,
-                        numberOfSeats = item.numberOfSeats,
-                        color = item.Color.name,
-                        country = item.Country.name,
-                        price = item.price,
-                    };
+                         select new CarShape
+                         {
+                             Id = item.Id,
+                             brand = item.Brand.name,
+                             carType = item.CarType.name,
+                             fuelType = item.Fuel.type,
+                             yearOfProduction = item.yearOfProduction,
+                             mileage = item.mileage,
+                             capacity = item.capacity,
+                             horsePower = item.horsePower,
+                             numberOfDoors = item.numberOfDoors,
+                             numberOfSeats = item.numberOfSeats,
+                             color = item.Color.name,
+                             country = item.Country.name,
+                             price = item.price,
+                         };
 
             // insert data to table
-            this.myDataGrid.ItemsSource = result.ToList();
+            myDataGrid.ItemsSource = result.ToList();
+            datagrid = myDataGrid;
         }
 
         private void insertClick(object sender, RoutedEventArgs e)
         {
             CarAdd insertPage = new CarAdd();
             insertPage.ShowDialog();
+        }
+
+        private void onDelete(object sender, RoutedEventArgs e)
+        {
+                var sItem = myDataGrid.SelectedItem as CarShape;
+
+                if (sItem != null)
+                {
+                    var deletedCar = db.Cars.Where(item => item.Id == sItem.Id).Single();
+                    db.Cars.Remove(deletedCar);
+                    db.SaveChanges();
+
+                    var result = from item in db.Cars
+                                 select new CarShape
+                                 {
+                                     Id = item.Id,
+                                     brand = item.Brand.name,
+                                     carType = item.CarType.name,
+                                     fuelType = item.Fuel.type,
+                                     yearOfProduction = item.yearOfProduction,
+                                     mileage = item.mileage,
+                                     capacity = item.capacity,
+                                     horsePower = item.horsePower,
+                                     numberOfDoors = item.numberOfDoors,
+                                     numberOfSeats = item.numberOfSeats,
+                                     color = item.Color.name,
+                                     country = item.Country.name,
+                                     price = item.price,
+                                 };
+
+                    myDataGrid.ItemsSource = result.ToList();
+                }
         }
     }
 }

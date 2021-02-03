@@ -11,10 +11,10 @@
             <Button x:Name="Dodaj" Content="Dodaj" Click="insertClick" HorizontalAlignment="Left" Margin="613,10,10,0" VerticalAlignment="Top" Width="70"/>
         </StackPanel>
 
-        <DataGrid x:Name="myDataGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Margin="0,38,0,0" >
+        <DataGrid x:Name="myDataGrid" x:FieldModifier="public" AutoGenerateColumns="False" ColumnWidth="*" Margin="0,38,0,0" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Marka" Binding="{Binding brand}" />
-                <DataGridTextColumn Header="Typ" Binding="{Binding type}" />
+                <DataGridTextColumn Header="Typ" Binding="{Binding carType}" />
                 <DataGridTextColumn Header="Typ paliwa" Binding="{Binding fuelType}" />
                 <DataGridTextColumn Header="Kraj pochodzenia" Binding="{Binding country}" />
                 <DataGridTextColumn Header="Moc" Binding="{Binding horsePower}" />
@@ -35,7 +35,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
                                 <Button x:Name="updateBtn" Content="Zmien" />
-                                <Button x:Name="deleteBtn" Content="Usun" />
+                                <Button x:Name="deleteBtn" Content="Usun" Click="onDelete" />
                             </StackPanel>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
